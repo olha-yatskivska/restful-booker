@@ -1,16 +1,22 @@
-# Smoke Test Suite (Using Unit Test from the author)
-
-### Project Overview & Baseline Analysis
-
-In this project, I reverse-engineered the existing automated API test scripts provided by the repository's author to extract a formalized Smoke Test Suite. By analyzing the underlying codebase, I verified that these tests successfully exercise the application's core critical paths (CRUD operations and basic authentication). I executed this baseline suite via the terminal (npm test) to validate the initial system health. But reviewing it I noticed some bugs.
-
-> The test oracle for HTTP status codes : [The five classes of HTTP status codes](https://blog.postman.com/what-are-http-status-codes/)
-
-### Expanding Coverage with Postman
-
-While the developer's initial tests provide a solid foundation, my independent test analysis revealed several critical coverage gaps. I applied formal test design techniques to identify overlooked edge cases, negative scenarios, and authorization vulnerabilities. To ensure comprehensive quality, I am developing a supplementary suite of automated API tests using Postman to cover these complex scenarios and bridge the testing gaps.
+# API Documentation and Baseline Test Review
 
 
+### API Documentation & Baseline Test Review
+In this project, I reverse-engineered the repository author's existing automated API test scripts to extract a formalized Smoke Test Suite. By analyzing the underlying codebase, I verified that these tests successfully exercise the application's core critical paths (CRUD operations and basic authentication). I executed this baseline suite via the terminal (npm test) to validate the initial system health. However, upon reviewing the results, I identified several architectural defects. 
+To document this, I created a baseline matrix comparing the code's current behavior against industry security standards. This shift-left approach allowed me to identify requirement-level bugs before expanding the automated test suite.
+
+Reference: The test oracle used for HTTP status code validation is based on standard REST conventions: [The five classes of HTTP status codes](https://blog.postman.com/what-are-http-status-codes/)
+
+Link Bug reports 
+
+### Expanding Coverage & Shift-Left Analysis
+
+While the developer's initial tests provided a solid foundation, my independent test analysis revealed critical coverage gaps. I applied formal test design techniques to identify overlooked edge cases, negative scenarios, and authorization vulnerabilities.
+
+Link to Full Test Analysis Documentation
+Link to Postman Collection
+
+### A matrix comparing the code's current behavior against industry security standards
 
 | Endpoint / Suite  | Scenario                                   | Expected Result according to the code|  Expected result according to the best practices standard                           | 
 |-------------------|--------------------------------------------|--------------------------------------|------------------------------------------------------------------------------------ |
@@ -42,7 +48,7 @@ While the developer's initial tests provide a solid foundation, my independent t
 | PUT /booking      | Update non-existent booking ID             | 405 Method Not Allowed               | 404 Not Found (if authorized) or 401/403 (if unauthorized/invalid token)            |
 | PUT /booking      | Update using XML payload                   | 200 OK, returns updated JSON         | 200 OK, returns updated JSON                                                        | 
 | PUT /booking      | Update valid booking, request XML response | 200 OK, returns updated XML          | 200 OK, returns updated XML                                                         |
-| DELETE /booking   | Delete booking without token               | 403 Forbidden                        | 401 Unauthorized auth token                                                         |
+| DELETE /booking   | Delete booking without token               | 403 Forbidden                        | 401 Unauthorized                                                                    |
 | DELETE /booking   | Delete booking with invalid token          | 403 Forbidden                        | 401 Unauthorized                                                                    |
 | DELETE /booking   | Delete valid booking with token            | 201 Created                          | 204 No Content/200 OK                                                               |
 | DELETE /booking   | Delete valid booking with Basic Auth       | 201 Created                          | 204 No Content/200 OK                                                               |
