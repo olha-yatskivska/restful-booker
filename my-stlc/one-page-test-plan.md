@@ -32,7 +32,7 @@ Restful-booker is a Create Read Update Delete Web API that comes with authentica
   
 ## Risks
 * Environment availability: Local Docker API test enviroment is running correctly
-* No requirements, based on Assamption
+* No requirements, based on Assumption
 * No knowledge of internal structure and integrations
 
 ## Environments & Tools
