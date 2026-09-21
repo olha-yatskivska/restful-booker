@@ -16,7 +16,7 @@ While the developer's initial tests provided a solid foundation, my independent 
 Link to Full Test Analysis Documentation
 Link to Postman Collection
 
-### A matrix comparing the code's current behavior against industry security standards
+### A matrix comparing the code's current behavior against industry standards
 
 | Endpoint / Suite  | Scenario                                   | Expected Result according to the code|  Expected result according to the best practices standard                           | 
 |-------------------|--------------------------------------------|--------------------------------------|------------------------------------------------------------------------------------ |
